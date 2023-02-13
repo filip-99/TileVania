@@ -13452,5 +13452,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gile (Player)
       objectReference: {fileID: 0}
+    - target: {fileID: 8445360146230034882, guid: 593940c171d5d2145827c190ce57e4da, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 593940c171d5d2145827c190ce57e4da, type: 3}
