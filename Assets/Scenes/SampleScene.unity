@@ -13404,13 +13404,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 403791109, guid: 593940c171d5d2145827c190ce57e4da, type: 3}
+      propertyPath: m_GravityScale
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 403791109, guid: 593940c171d5d2145827c190ce57e4da, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4683180842660357714, guid: 593940c171d5d2145827c190ce57e4da, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4683180842660357714, guid: 593940c171d5d2145827c190ce57e4da, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4683180842660357714, guid: 593940c171d5d2145827c190ce57e4da, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13457,8 +13461,8 @@ PrefabInstance:
       value: Gile (Player)
       objectReference: {fileID: 0}
     - target: {fileID: 8445360146230034882, guid: 593940c171d5d2145827c190ce57e4da, type: 3}
-      propertyPath: moveSpeed
-      value: 5
+      propertyPath: jumpSpeed
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 593940c171d5d2145827c190ce57e4da, type: 3}

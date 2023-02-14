@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D myRigidbody;
 
     [SerializeField] float moveSpeed;
+    [SerializeField] float jumpSpeed;
 
     Animator myAnimator;
 
@@ -33,6 +34,14 @@ public class PlayerMovement : MonoBehaviour
     {
         //  Kada pritisnemo neko od dugmeta za kretanje, dobijamo vrednost 1 ili -1 po x ili y osi
         moveInput = value.Get<Vector2>();
+    }
+
+    void OnJump(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            myRigidbody.velocity += new Vector2(0f, jumpSpeed);
+        }
     }
 
     // Metoda za kretanje igrača
