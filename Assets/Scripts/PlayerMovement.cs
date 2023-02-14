@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Run();
+        FlipSprite();
     }
 
     // Komponenta Player Input sadrži polje actions, koje referencira na parametar koji ima sačuvane kontrole
@@ -29,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
     {
         //  Kada pritisnemo neko od dugmeta za kretanje, dobijamo vrednost 1 ili -1 po x ili y osi
         moveInput = value.Get<Vector2>();
-        // Debug.Log(moveInput);
     }
 
     // Metoda za kretanje igrača
@@ -39,6 +39,24 @@ public class PlayerMovement : MonoBehaviour
         Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, myRigidbody.velocity.y);
         // Pomeramo kruto telo
         myRigidbody.velocity = playerVelocity;
+
+    }
+
+    // Potrebno je flipovati sprajt igrača tokom kretanja
+    private void FlipSprite()
+    {
+        // playerHorizontalSpeed = true, ako je brzina igrača veća od Epsilon(0)
+        // 0 može da napravi problem, jer nekad može doći do zabune, jer se može desiti da se sa 0 poredi broj 0.00000000000001 i dolazi do zabune
+        bool playerHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
+
+        // Ograničavamo da igrač se objekat igrača ne flipuje ako krenemo na levo
+        if (playerHorizontalSpeed)
+        {
+
+            // Mathf.Sign() - Vraća 1 u koliko je vrednost >= 0 ili vraća -1 u koliko je 
+            // Na osnovu ove vrednosti skaliraće se igrač
+            transform.localScale = new Vector2(Mathf.Sign(myRigidbody.velocity.x), 1f);
+        }
     }
 
 }
