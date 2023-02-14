@@ -14,9 +14,12 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float moveSpeed;
 
+    Animator myAnimator;
+
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -39,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
         Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, myRigidbody.velocity.y);
         // Pomeramo kruto telo
         myRigidbody.velocity = playerVelocity;
+
+        bool playerHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
+        // Pokrenućemo triger koji tera igrača da pređe u stanje trčanja
+        myAnimator.SetBool("isRunning", playerHorizontalSpeed);
 
     }
 
