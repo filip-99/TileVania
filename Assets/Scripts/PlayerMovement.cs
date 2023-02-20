@@ -11,22 +11,30 @@ public class PlayerMovement : MonoBehaviour
     Vector2 moveInput;
 
     Rigidbody2D myRigidbody;
+    Animator myAnimator;
+    CapsuleCollider2D myCapsuleCollider;
 
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpSpeed;
 
-    Animator myAnimator;
+    bool isClimbing;
+    [SerializeField] float climbSpeed;
+    float gravityScaleAtStart;
 
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        myCapsuleCollider = GetComponent<CapsuleCollider2D>();
+
+        gravityScaleAtStart = myRigidbody.gravityScale;
     }
 
     void Update()
     {
         Run();
         FlipSprite();
+        ClimbLadder();
     }
 
     // Komponenta Player Input sadrži polje actions, koje referencira na parametar koji ima sačuvane kontrole
@@ -38,6 +46,12 @@ public class PlayerMovement : MonoBehaviour
 
     void OnJump(InputValue value)
     {
+        if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            // U koliko ne dodiirujemo zemlju izaćiće iz cele metode
+            return;
+        }
+
         if (value.isPressed)
         {
             myRigidbody.velocity += new Vector2(0f, jumpSpeed);
@@ -73,6 +87,22 @@ public class PlayerMovement : MonoBehaviour
             // Na osnovu ove vrednosti skaliraće se igrač
             transform.localScale = new Vector2(Mathf.Sign(myRigidbody.velocity.x), 1f);
         }
+    }
+
+    // Potrebna je metoda za trčanje, koja je slična kao za trčanje samo se gleda y osa
+    private void ClimbLadder()
+    {
+        if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        {
+            myRigidbody.gravityScale = gravityScaleAtStart;
+            return;
+        }
+
+        myRigidbody.gravityScale = 0f;
+        Vector2 climbVelocity = new Vector2(myRigidbody.velocity.x, moveInput.y * climbSpeed);
+        myRigidbody.velocity = climbVelocity;
+        // myAnimator.SetBool("isClimbing", isClimbing);
+
     }
 
 }
