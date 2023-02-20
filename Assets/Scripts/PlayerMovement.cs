@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     // Komponenta Player Input sadrži polje actions, koje referencira na parametar koji ima sačuvane kontrole
     void OnMove(InputValue value)
     {
-        //  Kada pritisnemo neko od dugmeta za kretanje, dobijamo vrednost 1 ili -1 po x ili y osi
+        //  Kada pritisnemo neko od dugmeta za kretanje, dobijamo vrednost 1 ili -1 po x ili y osi, a po difoltu se setuje na 0
         moveInput = value.Get<Vector2>();
     }
 
@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         // Pomeramo kruto telo
         myRigidbody.velocity = playerVelocity;
 
+        // Promenjiva playerHorizontalSpeed biće true ako je uslov ispunjen
         bool playerHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
         // Pokrenućemo triger koji tera igrača da pređe u stanje trčanja
         myAnimator.SetBool("isRunning", playerHorizontalSpeed);
@@ -89,19 +90,25 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Potrebna je metoda za trčanje, koja je slična kao za trčanje samo se gleda y osa
+    // Potrebna je metoda za penjanje uz merdevine, koja je slična kao za trčanje samo se gleda y osa
     private void ClimbLadder()
     {
+        // U koliko nema dodira sa merdevinama izvrši sledeće
         if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
+            myAnimator.SetBool("isClimbing", false);
             myRigidbody.gravityScale = gravityScaleAtStart;
+            // Ako nema dodira odmah izađi iz cele metode ClimbLadder()
             return;
         }
 
         myRigidbody.gravityScale = 0f;
         Vector2 climbVelocity = new Vector2(myRigidbody.velocity.x, moveInput.y * climbSpeed);
         myRigidbody.velocity = climbVelocity;
-        // myAnimator.SetBool("isClimbing", isClimbing);
+
+        // U koliko je brzina po y osi > ili < od "0" izvršiće se animacija kretanja
+        bool playerVerticalSpeed = Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
+        myAnimator.SetBool("isClimbing", playerVerticalSpeed);
 
     }
 
