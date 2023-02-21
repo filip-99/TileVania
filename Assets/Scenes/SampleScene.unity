@@ -20380,10 +20380,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2875014952392269696, guid: 593940c171d5d2145827c190ce57e4da, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 61d486e27572fe1449e0b7f6cc4752d3, type: 2}
+    - target: {fileID: 2160311960860270566, guid: 593940c171d5d2145827c190ce57e4da, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4683180842660357714, guid: 593940c171d5d2145827c190ce57e4da, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -20431,14 +20431,6 @@ PrefabInstance:
     - target: {fileID: 4683180842660357719, guid: 593940c171d5d2145827c190ce57e4da, type: 3}
       propertyPath: m_Name
       value: Gile (Player)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4683180842660357719, guid: 593940c171d5d2145827c190ce57e4da, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8445360146230034882, guid: 593940c171d5d2145827c190ce57e4da, type: 3}
-      propertyPath: moveSpeed
-      value: 6.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 593940c171d5d2145827c190ce57e4da, type: 3}

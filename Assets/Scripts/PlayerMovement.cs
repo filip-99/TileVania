@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D myRigidbody;
     Animator myAnimator;
     CapsuleCollider2D myCapsuleCollider;
+    BoxCollider2D myBoxCollider;
 
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpSpeed;
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCapsuleCollider = GetComponent<CapsuleCollider2D>();
+        myBoxCollider = GetComponent<BoxCollider2D>();
 
         gravityScaleAtStart = myRigidbody.gravityScale;
     }
@@ -46,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnJump(InputValue value)
     {
-        if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if (!myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             // U koliko ne dodiirujemo zemlju izaćiće iz cele metode
             return;

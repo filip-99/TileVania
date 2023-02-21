@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 4683180842660357716}
   - component: {fileID: 2875014952392269696}
   - component: {fileID: 403791109}
+  - component: {fileID: 2160311960860270566}
   - component: {fileID: 6554119322987189787}
   - component: {fileID: 8445360146230034882}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gile (Player)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,12 +119,12 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 4683180842660357719}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 61d486e27572fe1449e0b7f6cc4752d3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.030122519, y: -0.08487558}
-  m_Size: {x: 0.4126191, y: 0.8233466}
+  m_Offset: {x: -0.03174925, y: -0.058847606}
+  m_Size: {x: 0.55251884, y: 0.87540257}
   m_Direction: 0
 --- !u!50 &403791109
 Rigidbody2D:
@@ -140,12 +141,38 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 8
+  m_GravityScale: 6.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!61 &2160311960860270566
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4683180842660357719}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.059648275, y: -0.45557702}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.37083578, y: 0.08267248}
+  m_EdgeRadius: 0
 --- !u!114 &6554119322987189787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835721f9684385e4f8fc60f50c4368b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 6.5
   jumpSpeed: 20
-  climbSpeed: 6
+  climbSpeed: 5.5
