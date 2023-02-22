@@ -18,9 +18,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpSpeed;
 
-    bool isClimbing;
     [SerializeField] float climbSpeed;
     float gravityScaleAtStart;
+
+    [SerializeField] Vector2 bounceForce = new Vector2(20f, 20f);
+
+    bool isAlive = true;
 
     void Start()
     {
@@ -34,20 +37,25 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!isAlive) { return; }
         Run();
         FlipSprite();
         ClimbLadder();
+        Die();
     }
 
     // Komponenta Player Input sadrži polje actions, koje referencira na parametar koji ima sačuvane kontrole
     void OnMove(InputValue value)
     {
+        // U koliko je igrač mrtav izađi iz cele metode
+        if (!isAlive) { return; }
         //  Kada pritisnemo neko od dugmeta za kretanje, dobijamo vrednost 1 ili -1 po x ili y osi, a po difoltu se setuje na 0
         moveInput = value.Get<Vector2>();
     }
 
     void OnJump(InputValue value)
     {
+        if (!isAlive) { return; }
         if (!myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             // U koliko ne dodiirujemo zemlju izaćiće iz cele metode
@@ -112,6 +120,16 @@ public class PlayerMovement : MonoBehaviour
         bool playerVerticalSpeed = Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
         myAnimator.SetBool("isClimbing", playerVerticalSpeed);
 
+    }
+
+    private void Die()
+    {
+        if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Enemies")))
+        {
+            myAnimator.SetTrigger("Dying");
+            myRigidbody.velocity = bounceForce;
+            isAlive = false;
+        }
     }
 
 }

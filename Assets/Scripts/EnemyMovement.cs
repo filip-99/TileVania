@@ -27,7 +27,7 @@ public class EnemyMovement : MonoBehaviour
 
         // Mathf.Sign() - Vraća 1 u koliko je vrednost >= 0 ili vraća -1 u koliko je manja od 0
         // Na osnovu ove vrednosti skaliraće se igrač
-        transform.localScale = new Vector2(-(Mathf.Sign(myRigidBody.velocity.x)), 1f);
+        transform.localScale = new Vector2(-(Mathf.Sign(myRigidBody.velocity.x)), transform.localScale.y);
     }
 
     void OnTriggerExit2D(Collider2D other)
