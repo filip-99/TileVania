@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     float gravityScaleAtStart;
 
     [SerializeField] Vector2 bounceForce = new Vector2(20f, 20f);
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform gun;
 
     bool isAlive = true;
 
@@ -66,6 +68,14 @@ public class PlayerMovement : MonoBehaviour
         {
             myRigidbody.velocity += new Vector2(0f, jumpSpeed);
         }
+    }
+
+    void OnFire(InputValue value)
+    {
+        if (!isAlive) { return; }
+
+        // Pritiskom na neku od dugmeta za pucanje instanciraćemo referenciran objekat iz prefaba
+        Instantiate(bullet, gun.position, transform.rotation);
     }
 
     // Metoda za kretanje igrača
