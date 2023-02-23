@@ -122,9 +122,10 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    // Kada igrač pogine izvršiće se sledeća metoda
     private void Die()
     {
-        if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Enemies")))
+        if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Enemies", "Hazards")))
         {
             myAnimator.SetTrigger("Dying");
             myRigidbody.velocity = bounceForce;
