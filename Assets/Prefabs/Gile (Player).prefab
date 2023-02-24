@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655284174068282032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.192, y: -0.126, z: 0}
+  m_LocalPosition: {x: 0.38, y: -0.126, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 8445360146230034882}
   m_Layer: 8
   m_Name: Gile (Player)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +129,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1178522377
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 1124045765, guid: 601961368b981af40ad0a691c859711c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -251,3 +251,5 @@ MonoBehaviour:
   jumpSpeed: 20
   climbSpeed: 5.5
   bounceForce: {x: 20, y: 20}
+  bullet: {fileID: 6639920695813727650, guid: c7ca531c3c6a0c240a55a9018554b87f, type: 3}
+  gun: {fileID: 1404923836763008491}
