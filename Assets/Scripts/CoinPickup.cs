@@ -9,6 +9,7 @@ public class CoinPickup : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            AudioManager.instance.PlaySFX(0);
             coinCounter++;
             Destroy(gameObject);
         }
