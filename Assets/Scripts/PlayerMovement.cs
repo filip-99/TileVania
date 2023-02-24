@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     Animator myAnimator;
     CapsuleCollider2D myCapsuleCollider;
     BoxCollider2D myBoxCollider;
+    GameSession gameSession;
 
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpSpeed;
@@ -33,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myCapsuleCollider = GetComponent<CapsuleCollider2D>();
         myBoxCollider = GetComponent<BoxCollider2D>();
+
+        gameSession = FindObjectOfType<GameSession>();
 
         gravityScaleAtStart = myRigidbody.gravityScale;
     }
@@ -140,6 +143,9 @@ public class PlayerMovement : MonoBehaviour
             myAnimator.SetTrigger("Dying");
             myRigidbody.velocity = bounceForce;
             isAlive = false;
+
+            // Pri zadobijanju udarca pozivamo metodu iz skripte GameSession
+            gameSession.ProcessPlayerDeath();
         }
     }
 
