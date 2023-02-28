@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameSession : MonoBehaviour
 {
     [SerializeField] int playerLives = 3;
-    int scoreCounter;
+    int scoreCounter = 0;
 
 
     [SerializeField] TextMeshProUGUI livesText;
@@ -33,8 +33,6 @@ public class GameSession : MonoBehaviour
 
     void Start()
     {
-        scoreCounter = 0;
-
         livesText.text = playerLives.ToString();
         scoreText.text = scoreCounter.ToString();
     }
@@ -51,25 +49,27 @@ public class GameSession : MonoBehaviour
         }
     }
 
+    public void IncreaseScore(int numberPoints)
+    {
+        scoreCounter += numberPoints;
+        scoreText.text = scoreCounter.ToString();
+    }
+
     private void TakeLife()
     {
         playerLives--;
+        Debug.Log(playerLives.ToString());
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         livesText.text = playerLives.ToString();
     }
 
     private void ResetGameSession()
     {
+        FindObjectOfType<ScenePersist>().ResetGamePersist();
         SceneManager.LoadScene(0);
         // Kada igrač pogine važno je da uništimo ovaj objekat sesije, jer će se kreirati novi prilikom učitavanja scene
         // Dakle kada bude Game Over potrebno je resetovati sve vrednosti i krenuti ispočetka
         Destroy(gameObject);
-    }
-
-    public void IncreaseScore(int numberPoints)
-    {
-        scoreCounter += numberPoints;
-        scoreText.text = scoreCounter.ToString();
     }
 
 }

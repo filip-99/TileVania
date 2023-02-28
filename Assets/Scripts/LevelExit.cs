@@ -21,12 +21,14 @@ public class LevelExit : MonoBehaviour
     {
         // WaitForSecondsRealtime vree čekanja u sekundama (realno vreme)
         yield return new WaitForSecondsRealtime(levelLoadDelay);
-        int nexSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
+        int nexSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         if (nexSceneIndex == SceneManager.sceneCountInBuildSettings)
         {
             nexSceneIndex = 0;
         }
+
+        FindObjectOfType<ScenePersist>().ResetGamePersist();
         SceneManager.LoadScene(nexSceneIndex);
     }
 }
