@@ -13,23 +13,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2020175194704110050, guid: 6bffa3d058cfe004888b004f8cae4a9e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2917
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2020175194704110050, guid: 6bffa3d058cfe004888b004f8cae4a9e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2917
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2020175194704110050, guid: 6bffa3d058cfe004888b004f8cae4a9e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.2917
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2020175194704110050, guid: 6bffa3d058cfe004888b004f8cae4a9e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.9450374
+      value: -0.29
       objectReference: {fileID: 0}
     - target: {fileID: 2020175194704110050, guid: 6bffa3d058cfe004888b004f8cae4a9e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.0944757
+      value: 11.43
       objectReference: {fileID: 0}
     - target: {fileID: 2020175194704110050, guid: 6bffa3d058cfe004888b004f8cae4a9e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2020175194704110051, guid: 6bffa3d058cfe004888b004f8cae4a9e, type: 3}
       propertyPath: m_Name
-      value: Coin
+      value: Coin Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2020175194704110062, guid: 6bffa3d058cfe004888b004f8cae4a9e, type: 3}
       propertyPath: numberPoints

@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform gun;
 
     bool isAlive = true;
+    bool canDoubleJump;
+    bool isFired;
 
     void Start()
     {
@@ -61,15 +63,25 @@ public class PlayerMovement : MonoBehaviour
     void OnJump(InputValue value)
     {
         if (!isAlive) { return; }
+
         if (!myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
+            if (canDoubleJump && value.isPressed)
+            {
+                canDoubleJump = false;
+                myRigidbody.velocity += new Vector2(myRigidbody.velocity.x, jumpSpeed / 2);
+            }
             // U koliko ne dodiirujemo zemlju izaćiće iz cele metode
             return;
+        }
+        else
+        {
+            canDoubleJump = true;
         }
 
         if (value.isPressed)
         {
-            myRigidbody.velocity += new Vector2(0f, jumpSpeed);
+            myRigidbody.velocity += new Vector2(myRigidbody.velocity.x, jumpSpeed);
         }
     }
 
@@ -77,6 +89,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAlive) { return; }
 
+        if (value.isPressed)
+        {
+            StartCoroutine(AttackAction());
+
+        }
+    }
+
+    IEnumerator AttackAction()
+    {
+        myAnimator.SetTrigger("isFired");
+        yield return new WaitForSeconds(0.12f);
         // Pritiskom na neku od dugmeta za pucanje instanciraćemo referenciran objekat iz prefaba
         Instantiate(bullet, gun.position, transform.rotation);
     }

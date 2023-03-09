@@ -265,6 +265,17 @@
                 },
                 {
                     "name": "",
+                    "id": "43aa86d2-c945-4542-86c1-cd5fa79ca6f0",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4001a279-da7f-4c93-8e8c-4fc5a30cb7c9",
                     "path": "<Keyboard>/space",
                     "interactions": "",
