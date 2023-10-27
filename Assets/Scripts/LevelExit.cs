@@ -16,6 +16,11 @@ public class LevelExit : MonoBehaviour
         }
     }
 
+    public void NextLevel()
+    {
+        StartCoroutine(LoadNextLevel());
+    }
+
     // Metoda koja pre izvršavanja ima definisano vreme čekanja
     IEnumerator LoadNextLevel()
     {
