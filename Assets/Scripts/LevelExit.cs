@@ -6,34 +6,52 @@ using UnityEngine.SceneManagement;
 
 public class LevelExit : MonoBehaviour
 {
-    [SerializeField] float levelLoadDelay = 1f;
+    [SerializeField] float levelLoadDelay = 3f;
+    public GameObject pauseScreen;
+    public bool isPause;
 
-    void OnTriggerEnter2D(Collider2D other)
+    public void PauseUnpause()
     {
-        if (other.tag == "Player")
+        if (isPause)
         {
-            StartCoroutine(LoadNextLevel());
+            isPause = false;
+            pauseScreen.SetActive(false);
+            // Setujemo normalno vreme u igri
+            Time.timeScale = 1f;
         }
-    }
 
-    public void NextLevel()
-    {
-        StartCoroutine(LoadNextLevel());
+        else
+        {
+            isPause = true;
+            pauseScreen.SetActive(true);
+            // Zaustavljamo vreme u igri
+            Time.timeScale = 0f;
+        }
     }
 
     // Metoda koja pre izvršavanja ima definisano vreme čekanja
-    IEnumerator LoadNextLevel()
+    public void LoadNextLevel()
     {
-        // WaitForSecondsRealtime vree čekanja u sekundama (realno vreme)
+        StartCoroutine(LoadSceneRoutine());
+    }
+
+    private IEnumerator LoadSceneRoutine()
+    {
+        UIController.instance.FadeToBlack();
+
         yield return new WaitForSecondsRealtime(levelLoadDelay);
 
-        int nexSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        if (nexSceneIndex == SceneManager.sceneCountInBuildSettings)
-        {
-            nexSceneIndex = 0;
-        }
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
+        int nextSceneIndex = currentSceneIndex + 1;
+        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIndex = 0;
+        }
         FindObjectOfType<ScenePersist>().ResetGamePersist();
-        SceneManager.LoadScene(nexSceneIndex);
+        SceneManager.LoadScene(nextSceneIndex);
+
+        PauseUnpause();
+
     }
 }

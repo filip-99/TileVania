@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!isAlive) { return; }
+        if (!isAlive || FindObjectOfType<LevelExit>().isPause) { return; }
         Run();
         FlipSprite();
         ClimbLadder();
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnFire(InputValue value)
     {
-        if (!isAlive) { return; }
+        if (!isAlive || FindObjectOfType<LevelExit>().isPause) { return; }
 
         if (value.isPressed)
         {
