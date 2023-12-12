@@ -159,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Kada igrač pogine izvršiće se sledeća metoda
-    private void Die()
+    public void Die()
     {
         if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Enemies", "Hazards")))
         {

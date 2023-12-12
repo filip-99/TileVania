@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355758778524563869}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6999998, y: -0.5, z: 0}
+  m_LocalPosition: {x: -1.545, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355758778971371146}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8000002, y: -0.5, z: 0}
+  m_LocalPosition: {x: 1.933, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -90,7 +90,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355758779641371356}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.93, y: 4.893, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -188,7 +188,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1.75}
+    oldSize: {x: 2, y: 1.1875}
     newSize: {x: 2, y: 1.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -196,20 +196,20 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.11256027, y: -0.00055122375}
-      - {x: 0.03257084, y: -0.0632391}
-      - {x: -0.37142944, y: -0.06404066}
-      - {x: -0.4368229, y: -0.13676357}
-      - {x: -0.43845367, y: -0.43144798}
-      - {x: -0.38025475, y: -0.63494444}
-      - {x: -0.49049664, y: -0.6339073}
-      - {x: -0.4905796, y: -0.7478452}
-      - {x: -0.3145771, y: -0.8155632}
-      - {x: 0.24821472, y: -0.8039341}
-      - {x: 0.312891, y: -0.56597376}
+    - - {x: 0.10305786, y: 0.21628547}
+      - {x: -0.3688841, y: 0.21972668}
+      - {x: -0.42588043, y: 0.1511696}
+      - {x: -0.4368229, y: -0.014897525}
+      - {x: -0.44104767, y: -0.27328143}
+      - {x: -0.36995125, y: -0.3433489}
+      - {x: -0.49561214, y: -0.34238186}
+      - {x: -0.4937687, y: -0.46507958}
+      - {x: -0.3716221, y: -0.46611813}
+      - {x: -0.005748749, y: -0.4661921}
+      - {x: 0.24929619, y: -0.46944094}
       - {x: 0.31270885, y: -0.42495823}
-      - {x: 0.32677746, y: -0.13957071}
-      - {x: 0.22173214, y: 0.2728486}
+      - {x: 0.30603313, y: 0.16120505}
+      - {x: 0.21914196, y: 0.46212995}
   m_UseDelaunayMesh: 0
 --- !u!95 &1355758779641371355
 Animator:
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e00d44b1326a54b8eb8056cf2d95c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1.5
   leftPoint: {fileID: 1355758778524563868}
   rightPoint: {fileID: 1355758778971371145}
   theSR: {fileID: 1355758779641371352}

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,14 @@ public class LevelExit : MonoBehaviour
     [SerializeField] float levelLoadDelay = 3f;
     public GameObject pauseScreen;
     public bool isPause;
+
+    [SerializeField] TextMeshProUGUI storyText;
+    [SerializeField] StorySO[] story = new StorySO[2];
+
+    private void Start()
+    {
+        storyText.text = story[SceneManager.GetActiveScene().buildIndex - 1].GetStory();
+    }
 
     public void PauseUnpause()
     {
@@ -35,6 +44,11 @@ public class LevelExit : MonoBehaviour
         StartCoroutine(LoadSceneRoutine());
     }
 
+    public void LoadMainMenu()
+    {
+        StartCoroutine(LoadMainMenuRoutine());
+    }
+
     private IEnumerator LoadSceneRoutine()
     {
         UIController.instance.FadeToBlack();
@@ -50,6 +64,18 @@ public class LevelExit : MonoBehaviour
         }
         FindObjectOfType<ScenePersist>().ResetGamePersist();
         SceneManager.LoadScene(nextSceneIndex);
+
+        PauseUnpause();
+
+    }
+
+    private IEnumerator LoadMainMenuRoutine()
+    {
+        UIController.instance.FadeToBlack();
+
+        yield return new WaitForSecondsRealtime(levelLoadDelay);
+
+        SceneManager.LoadScene("Main Menu");
 
         PauseUnpause();
 

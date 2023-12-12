@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour
     PlayerMovement player;
     float xSpeed;
 
+    public GameObject deathEffect;
+
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -30,6 +32,7 @@ public class Bullet : MonoBehaviour
         if (other.tag == "Enemy")
         {
             Destroy(other.gameObject);
+            Instantiate(deathEffect, other.transform.position, other.transform.rotation);
         }
         Destroy(gameObject);
     }
