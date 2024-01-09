@@ -17,7 +17,12 @@ public class MainMenu : MonoBehaviour
         {
             Destroy(gameSession.gameObject);
         }
-        Debug.Log("Jeste");
+
+        ScenePersist[] scenePersists = FindObjectsOfType<ScenePersist>();
+        foreach (ScenePersist scenePersistss in scenePersists)
+        {
+            Destroy(scenePersistss.gameObject);
+        }
     }
 
     public void StartGame()

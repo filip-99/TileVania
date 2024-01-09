@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+
     // Potrebna je promenjiva koja će imati vrednost 1 ili -1 kada igrač pritisne levo ili desno
     Vector2 moveInput;
 
@@ -64,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAlive) { return; }
 
-        if (!myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if (!myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myBoxCollider.IsTouchingLayers(LayerMask.GetMask("Platform")))
         {
             if (canDoubleJump && value.isPressed)
             {

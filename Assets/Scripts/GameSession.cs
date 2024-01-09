@@ -29,18 +29,20 @@ public class GameSession : MonoBehaviour
         else
         {
             DontDestroyOnLoad(gameObject);
+
+            livesText.text = playerLives.ToString();
+            scoreText.text = scoreCounter.ToString();
         }
     }
 
     void Start()
     {
-        livesText.text = playerLives.ToString();
-        scoreText.text = scoreCounter.ToString();
+        
     }
 
     public void ProcessPlayerDeath()
     {
-        if (playerLives > 1)
+        if (playerLives >= 1)
         {
             TakeLife();
         }
@@ -58,7 +60,7 @@ public class GameSession : MonoBehaviour
 
     private void TakeLife()
     {
-        playerLives--;
+        playerLives -= 1;
         Debug.Log(playerLives.ToString());
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         livesText.text = playerLives.ToString();

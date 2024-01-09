@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelExit : MonoBehaviour
 {
+    [SerializeField] GameObject mobileControlsPanel;
+
     [SerializeField] float levelLoadDelay = 3f;
     public GameObject pauseScreen;
     public bool isPause;
@@ -25,6 +27,7 @@ public class LevelExit : MonoBehaviour
         {
             isPause = false;
             pauseScreen.SetActive(false);
+            // mobileControlsPanel.SetActive(true);
             // Setujemo normalno vreme u igri
             Time.timeScale = 1f;
         }
@@ -33,6 +36,7 @@ public class LevelExit : MonoBehaviour
         {
             isPause = true;
             pauseScreen.SetActive(true);
+            // mobileControlsPanel.SetActive(false);
             // Zaustavljamo vreme u igri
             Time.timeScale = 0f;
         }
