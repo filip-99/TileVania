@@ -8,10 +8,12 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
 
+    public static PlayerMovement instance;
+
     // Potrebna je promenjiva koja će imati vrednost 1 ili -1 kada igrač pritisne levo ili desno
     Vector2 moveInput;
 
-    Rigidbody2D myRigidbody;
+    [HideInInspector] public Rigidbody2D myRigidbody;
     Animator myAnimator;
     CapsuleCollider2D myCapsuleCollider;
     BoxCollider2D myBoxCollider;
@@ -30,6 +32,18 @@ public class PlayerMovement : MonoBehaviour
     bool isAlive = true;
     bool canDoubleJump;
     bool isFired;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {

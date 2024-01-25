@@ -37,6 +37,7 @@ public class EnemyGolem : MonoBehaviour
 
         else
         {
+
             theRB.velocity = new Vector2(-moveSpeed, theRB.velocity.y);
 
             theSR.flipX = false;
